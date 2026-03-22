@@ -14,7 +14,7 @@ app.get('/webhook', (req,res)=>{
     const token = req.query['hub.verify_token'];
     const challenge = req.query['hub.challenge'];
     if(mode === 'subscribe' && token===process.env.VERIFY_TOKEN){
-        res.json(challenge)
+        res.send(challenge)
     } else  {
        res.status(403).send('Forbidden');
     }
