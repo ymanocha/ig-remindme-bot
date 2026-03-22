@@ -3,11 +3,13 @@ function parseRemindTime(text) {
   if (!match) return null;
   const number = Number(match[1])
   let now = new Date();
+  let minute = 60 * 1000
   let hour = 60 * 60 * 1000
   let day = 24 * 60 * 60 * 1000
   let week = 7 * 24 * 60 * 60 * 1000
-  
-  if (match[2]==='hour'){
+  if (match[2] === 'minute') {
+    return new Date(now.getTime() + number * minute);
+  } else if (match[2]==='hour'){
     let remindTime = new Date(now.getTime()+ number*hour )
     return remindTime
   } else if(match[2]==='day') {
